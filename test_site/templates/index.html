@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .menu-item {
+        margin: 20px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+    .menu-item img {
+        max-width: 300px;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .parameters {
+        margin-left: 20px;
+    }
+    .menu {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>{{ restaurant_name }}</h1>
+
+{% if menu_items %}
+    <div class="menu">
+        {% for item in menu_items %}
+            <div class="menu-item">
+                <h2>{{ item.name }}</h2>
+                <img src="{% static item.photo %}" alt="{{ item.name }}">
+                
+                <h3>Ингредиенты:</h3>
+                <ul>
+                    {% for ingredient in item.ingredients %}
+                        <li>{{ ingredient }}</li>
+                    {% endfor %}
+                </ul>
+
+                <h3>Дополнительная информация:</h3>
+                <div class="parameters">
+                    {% if item.details.spicy %}
+                        <p>🌶️ Острое блюдо</p>
+                    {% else %}
+                        <p>Неострое блюдо</p>
+                    {% endif %}
+                    
+                    <p>Время приготовления: {{ item.details.cooking_time }} минут</p>
+                    <p>Цена: {{ item.details.price }} ₽</p>
+                    
+                    {% if item.details.vegetarian %}
+                        <p>♥️ Вегетарианское блюдо</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>К сожалению, меню пока недоступно.</p>
+{% endif %}
+{% endblock %}

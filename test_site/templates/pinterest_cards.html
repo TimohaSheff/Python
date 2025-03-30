@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinterest Style</title>
+    <link rel="stylesheet" href="{% static 'css/pinterest_style.css' %}">
+</head>
+<body>
+    <div class="cards-container">
+        <div class="card">
+            <img src="{% static 'images/b.jpg' %}" alt="Борщ">
+            <div class="card-text">
+                <p>Борщ</p>
+            </div>
+            <button class="save-button">Сохранить</button>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/p.jpg' %}" alt="Пельмени">
+            <div class="card-text">
+                <p>Пельмени</p>
+            </div>
+            <button class="save-button">Сохранить</button>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/g.jpg' %}" alt="Грибной жульен">
+            <div class="card-text">
+                <p>Грибной жульен</p>
+            </div>
+            <button class="save-button">Сохранить</button>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'images/bur.jpg' %}" alt="Бургер">
+            <div class="card-text">
+                <p>Бургер</p>
+            </div>
+            <button class="save-button">Сохранить</button>
+        </div>
+    </div>
+</body>
+</html> 
